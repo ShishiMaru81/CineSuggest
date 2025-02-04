@@ -10,10 +10,10 @@ Movies = pd.DataFrame(Movies_dict)
 Similarity = pickle.load(open("similarity1.pkl", "rb"))
 
 
-# Function to get movie posters using TMDb API
+
 def fetch_poster(movie_title):
-    """Fetch poster URL for a given movie title using TMDb API."""
-    api_key = "YOUR_TMDB_API_KEY"  # Replace with your TMDb API key
+
+    api_key = "YOUR_TMDB_API_KEY"
     url = f"https://api.themoviedb.org/3/search/movie?api_key={"8265bd1679663a7ea12ac168da84d2e8"}&query={movie_title}"
 
     response = requests.get(url)
@@ -24,11 +24,11 @@ def fetch_poster(movie_title):
         full_poster_url = f"https://image.tmdb.org/t/p/w500{poster_path}"
         return full_poster_url
     else:
-        return "https://via.placeholder.com/200"  # Default placeholder if not found
+        return "https://via.placeholder.com/200"  #
 
 
 def recommend(movie):
-    """Recommend movies based on similarity and return posters."""
+
 
     Movie_List = Movies["title"].tolist()
     Find_close_match = difflib.get_close_matches(movie, Movie_List)
@@ -50,7 +50,7 @@ def recommend(movie):
     recommended_movies = []
     recommended_posters = []
 
-    for i, (index, _) in enumerate(sorting_similarity[1:6]):  # Top 5 recommendations
+    for i, (index, _) in enumerate(sorting_similarity[1:6]):
         movie_title = Movies.iloc[index]["title"]
         recommended_movies.append(movie_title)
         recommended_posters.append(fetch_poster(movie_title))
@@ -90,42 +90,52 @@ if st.button("Recommend!"):
     recommended_movies, recommended_posters = recommend(selected_Movie_Name)
 
     if recommended_movies:
-        st.subheader("Recommended Movies:")
-
-        # Display movies and posters in a grid layout
-        cols = st.columns(5)  # Create 5 columns for displaying posters
-
-        for i in range(len(recommended_movies)):
-            with cols[i]:  # Assign each movie to a column
-                st.image(recommended_posters[i], use_column_width=True)
-                st.write(recommended_movies[i])
-st.markdown(
-    """
-    <style>
-    .movie-poster:hover {
-        transform: scale(1.1);  /* Scale up on hover */
-        transition: transform 0.3s ease-in-out;  /* Smooth transition */
-        border: 3px solid #FF6347;  /* Add border on hover */
-    }
-    .movie-poster {
-        border-radius: 10px;  /* Optional: rounded corners */
-    }
-    </style>
+        transition: transform
+        0.3
+        s
+        ease - in -out; / *Smooth
+        transition * /
+        border: 3
+        px
+        solid  # FF6347;  /* Add border on hover */
+}
+.movie - poster
+{
+border - radius: 10
+px; / *Optional: rounded
+corners * /
+}
+< / style >
     """,
-    unsafe_allow_html=True
+  unsafe_allow_html=True
 )
 
 st.markdown("<h3 style='color: red;'>Created by Anindya Paul.</h3>", unsafe_allow_html=True)
-github_url = "https://github.com/ShishiMaru81"  # Replace with your actual GitHub URL
+github_url = "https://github.com/ShishiMaru81"  
 
 # Create the button
 if st.button("Visit My GitHub Profile"):
-    # Open the GitHub profile when the button is clicked
-    st.markdown(f'<a href="{github_url}" target="_blank">Click here to go to my GitHub</a>', unsafe_allow_html=True)
+  # Open the GitHub profile when the button is clicked
+  st.markdown(f'<a href="{github_url}" target="_blank">Click here to go to my GitHub</a>', unsafe_allow_html=True)
 
 
 
 prompt=st.chat_input("Say Something About this Project!")
 
 if prompt:
-    st.write(f"User has sent a text : {prompt}")
+  st.write(f"User has sent a text : {prompt
+st.subheader("Recommended Movies:")
+
+# Display movies and posters in a grid layout
+cols = st.columns(5)  # Create 5 columns for displaying posters
+
+for i in range(len(recommended_movies)):
+  with cols[i]:  # Assign each movie to a column
+      st.image(recommended_posters[i], use_column_width=True)
+      st.write(recommended_movies[i])
+st.markdown(
+"""
+    <style>
+    .movie-poster:hover {
+        transform: scale(1.1);  /* Scale up on hover */
+ }")
