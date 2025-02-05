@@ -1,7 +1,7 @@
 # CineSuggest
 
 
-</h2>A Movie Recommendation System for all to use </h2>
+<h1>A Movie Recommendation System for all to use </h1>
 
 Overview:
 
