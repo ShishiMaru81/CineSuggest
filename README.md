@@ -1,5 +1,4 @@
-# CineSuggest
-
+<h1>CineSuggest</h1>
 
 <h1>A Movie Recommendation System for all to use </h1>
 
